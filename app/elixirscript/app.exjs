@@ -1,5 +1,7 @@
 defmodule App do
-          def hi() do
-              :console.log("hi")
-          end
+  def hi() do
+    :console.log("If you are seeing this, it works")
+  end
+
+  hi()
 end

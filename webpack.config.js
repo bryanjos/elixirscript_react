@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   cache: true,
-  entry: ['./app/tmp/Elixir.App.js'],
+  entry: ['babel-polyfill', './app/tmp/app/Elixir.App.js'],
   output: {
     path: path.join(__dirname, "dist"),
     filename: 'build.min.js'

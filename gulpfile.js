@@ -13,7 +13,7 @@ const exec = require('child_process').exec;
 
 const exjsSrc = 'app/elixirscript';
 const exjsDest = 'app/tmp';
-const entry = './app/tmp/Elixir.App.js';
+const entry = './app/tmp/app/Elixir.App.js';
 
 gulp.task('build-exjs', (cb) => exec('elixirscript "' + exjsSrc + '" -o ' + exjsDest, (err, stdout, stderr) => cb(err)));
 
