@@ -24,8 +24,10 @@ defmodule App do
 
   def view(model) do
       div do
-        input [type: "text", placeholder: "Name", onChange: &update(&1, :name), value: model.name]
-        input [type: "email", placeholder: "Email", onChange: &update(&1, :email), value: model.email]
+        form do
+          input [type: "text", placeholder: "Name", onChange: &update(&1, :name), value: model.name]
+          input [type: "email", placeholder: "Email", onChange: &update(&1, :email), value: model.email]
+        end
         div do
           "Name: #{model.name}"
         end

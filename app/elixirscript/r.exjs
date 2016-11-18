@@ -1,6 +1,13 @@
 defmodule R do
+  @load_only true
 
-  for tag <- [:h1, :div, :span, :input] do
+  @external_resource tags_path = Path.join([__DIR__, "tags.txt"])
+
+  @tags (for line <- File.stream!(tags_path, [], :line) do
+    line |> String.strip |> String.to_atom
+  end)
+
+  for tag <- @tags do
     @doc """
     Defines a macro for the html element, #{tag}
     """
