@@ -1,5 +1,5 @@
 {
-  "name": "elixirscript-project-boilerplate",
+  "name": "elixirscript-react",
   "version": "1.0.0",
   "description": "",
   "main": "gulpfile.js",
@@ -29,5 +29,9 @@
     "webpack": "^1.12.14",
     "webpack-dev-server": "^1.14.1",
     "webpack-stream": "^3.1.0"
+  },
+  "dependencies": {
+    "react": "^15.4.0",
+    "react-dom": "^15.4.0"
   }
 }

@@ -1,7 +1,48 @@
 defmodule App do
-  @on_js_load :hi
+  @on_js_load :main  
+  require JS
+  JS.import React, "react"
+  JS.import ReactDOM, "react-dom"
+  import R
 
-  def hi() do
-    :console.log("If you are seeing this, it works")
+  def initial_state() do
+    %{name: "", email: ""}
+  end
+
+  def update(event, msg) do
+    Agent.update(:model, fn(state) ->
+      case msg do
+        :name ->
+                %{state | name: event.target.value}
+        :email ->
+                %{state | email: event.target.value}
+      end
+    end)
+
+    render()
+  end
+
+  def view(model) do
+      div do
+        input [type: "text", placeholder: "Name", onChange: &update(&1, :name), value: model.name]
+        input [type: "email", placeholder: "Email", onChange: &update(&1, :email), value: model.email]
+        div do
+          "Name: #{model.name}"
+        end
+        div do
+          "Email: #{model.email}"
+        end
+      end
+  end
+
+  def render() do
+    Agent.get(:model, fn(state) -> state end)
+    |> view
+    |> ReactDOM.render(:document.getElementById("main"))
+  end
+
+  def main() do
+    Agent.start(&initial_state/0, [name: :model])
+    render()
   end
 end
