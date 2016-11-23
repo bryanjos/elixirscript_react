@@ -1,6 +1,14 @@
 defmodule R do
   @load_only true
 
+  defmacro __using__(_) do
+    quote do
+      JS.import React, "react"
+      JS.import ReactDOM, "react-dom"
+      import R
+    end
+  end
+
   @external_resource tags_path = Path.join([__DIR__, "tags.txt"])
 
   @tags (for line <- File.stream!(tags_path, [], :line) do
